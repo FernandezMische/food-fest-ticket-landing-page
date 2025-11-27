@@ -5,27 +5,37 @@ import LikeBtn from "./LikeBtn.vue";
 const TierCards = [
   {
     id: 1,
-    name: "premium",
+    name: "VIP Experience",
     description: [
-      "This is the best tier",
-      "Live music",
-      "Exclusive seating",
-      "VIP support"
+      "Fast-track entrance",
+      "Access to VIP lounge",
+      "2 complimentary food tastings",
+      "Front-row access to live cooking demos",
+      "Exclusive festival merch"
     ],
-    price: "R99.99",
+    price: "R299.00",
   },
   {
-    id: 2,
-    name: "standard",
-    description: "This is the standard tier",
-    price: "R59.99",
+     id: 2,
+    name: "Standard Pass",
+    description: [
+      "Full-day festival access",
+      "Access to all food stalls",
+      "Live music included",
+      "Entry to general seating areas"
+    ],
+    price: "R149.00",
   },
   {
-    id: 3,
-    name: "budget",
-    description: "This is the budget tier",
-    price: "R29.99",
-  },
+     id: 3,
+    name: "Budget Entry",
+    description: [
+      "General admission",
+      "Access to food stalls",
+      "Limited seating areas"
+    ],
+    price: "R79.00",
+  }
 ];
 </script>
 
@@ -34,7 +44,8 @@ const TierCards = [
     <div
       v-for="(card, index) in TierCards"
       :key="card.id"
-      :class="['card', { 'featured-card': index === 1 }]"
+      :class="['card', { 'featured-card': index === 1 , 'VIP-card': index===0}]"
+
       style="width: 20rem; height: 24rem"
     >
       <div class="card-body">
@@ -42,7 +53,7 @@ const TierCards = [
               <h5 class="card-title">{{ card.name }}</h5>
               <LikeBtn />
         </div>
-      
+
         <li v-for="(item,i) in card.description" :key="i" class="card-subtitle mb-2 text-body-secondary">{{ item }}</li>
         <p class="card-text">{{ card.price }}</p>
         <button class="btn btn-primary">Select</button>
@@ -53,21 +64,29 @@ const TierCards = [
 
 <style scoped>
 .tier-list {
-  
+
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
- 
+
 }
 
 .card {
   margin: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.featured-card {
+.card:hover{
   transform: scale(1.05);
+}
+.featured-card {
+  transform: scale(1.0);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  border: 2px solid #ffc107;
+  border: 2px solid #a06ce4;
+}
+.VIP-card{
+   border: 2px solid #e1b12c;
+}
+.card-body{
+  padding: 2rem;
 }
 </style>
